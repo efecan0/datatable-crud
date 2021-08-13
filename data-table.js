@@ -1,7 +1,7 @@
 $(document).ready(function () {
 
   $('#example').DataTable({
-
+ 
     columnDefs: [
       { type: 'turkish', targets: [0, 1] }
     ],
