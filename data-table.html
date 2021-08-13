@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="data-table.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.7.1/css/buttons.dataTables.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.25/css/jquery.dataTables.min.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.25/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/dataTables.buttons.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.7.1/js/buttons.print.min.js"></script>
+    <script src="data-table.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+   
+</head>
+<style>
+    div.dataTables_length {
+       margin-right: 3em;
+    }
+  </style>
+<body>
+
+    <header>    <button id="btnopen" class="openbtn w3-left" onclick="openNav()" style="margin-top: 10px;">Aç</button>
+        <h1>DATATABLE</h1>
+        <h1 id="xxx" hidden>25.215,75</h1>
+    </header>
+
+<div class="container">
+
+
+
+
+
+    <button type="button" class="btn btn-success btn-md" id="myBtn">Ekle </button>  
+    <button id="myBtn2" class="btn btn-success btn-md">Sil</button>
+    <button id="myBtn3" class="btn btn-success btn-md">Edit</button>
+   
+    <div class="modal fade" id="myModal" role="dialog">
+      <div class="modal-dialog">
+    
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Eklemek istediğiniz verileri giriniz!!!</h4>
+          </div>
+          <div class="modal-body">
+            
+    <form>
+        <p>Name: </p>
+        <input type="text" name="name" id="name" placeholder="name" /> 
+        <p>Position: </p>
+        <input type="text"  name="position" id="position" placeholder="position"/> 
+        <p>Office: </p>
+        <input type="text" name="office" id="office" placeholder="office" />
+        <p>Age: </p>
+        <input type="text" name="age" id="age" placeholder="age" />
+        <p>Date: </p>
+        <input type="text" name="date" id="date" placeholder="date" /> 
+        <p>Salary: </p>
+        <input type="text" name="salary" id="salary" placeholder="salary" />
+    </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" value="add new row" id="addbtn" class="btn btn-default" data-dismiss="modal">Ekle</button>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  
+  
+
+
+
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.html">Anasayfa</a>
+        <a href="blog.html">Blog</a>
+        <a href="#">Hakkında</a>
+        <a href="data-table.html">Data-Table</a>
+    </div>
+
+
+    <button id="button">Row count</button>
+    <br></br>
+
+
+
+
+
+<div id= "main" class="w3-card-4">
+    <table id="example" class="table table-striped table-bordered"  style="width: 100%;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th >Position</th>
+                <th >Office</th>
+                <th >Age</th>
+                <th >Start date</th>
+                <th >Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Çağlar bbbb</td>
+                <td>System Architect</td>
+                <td>Edinburgh</td>
+                <td>61</td>
+                <td>2011/04/25</td>
+                <td>$320,800</td>
+            </tr>
+            <tr>
+                <td>ğarrett Winters</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>63</td>
+                <td>2011/07/25</td>
+                <td>$170,750</td>
+            </tr>
+            <tr>
+                <td>Ashton Cox</td>
+                <td>Junior Technical Author</td>
+                <td>San Francisco</td>
+                <td>66</td>
+                <td>2009/01/12</td>
+                <td>$86,000</td>
+            </tr>
+            <tr>
+                <td>Cedric Kelly</td>
+                <td>Senior Javascript Developer</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2012/03/29</td>
+                <td>$433,060</td>
+            </tr>
+            <tr>
+                <td>Airi Satou</td>
+                <td>Accountant</td>
+                <td>Tokyo</td>
+                <td>33</td>
+                <td>2008/11/28</td>
+                <td>$162,700</td>
+            </tr>
+            <tr>
+                <td>Brielle Williamson</td>
+                <td>Integration Specialist</td>
+                <td>New York</td>
+                <td>61</td>
+                <td>2012/12/02</td>
+                <td>$372,000</td>
+            </tr>
+            <tr>
+                <td>Herrod Chandler</td>
+                <td>Sales Assistant</td>
+                <td>San Francisco</td>
+                <td>59</td>
+                <td>2012/08/06</td>
+                <td>$137,500</td>
+            </tr>
+            <tr>
+                <td>Rhona Davidson</td>
+                <td>Integration Specialist</td>
+                <td>Tokyo</td>
+                <td>55</td>
+                <td>2010/10/14</td>
+                <td>$327,900</td>
+            </tr>
+            <tr>
+                <td>Colleen Hurst</td>
+                <td>Javascript Developer</td>
+                <td>San Francisco</td>
+                <td>39</td>
+                <td>2009/09/15</td>
+                <td>$205,500</td>
+            </tr>
+            <tr>
+                <td>Sonya Frost</td>
+                <td>Software Engineer</td>
+                <td>Edinburgh</td>
+                <td>23</td>
+                <td>2008/12/13</td>
+                <td>$103,600</td>
+            </tr>
+            <tr>
+                <td>Jena Gaines</td>
+                <td>Office Manager</td>
+                <td>London</td>
+                <td>30</td>
+                <td>2008/12/19</td>
+                <td>$90,560</td>
+            </tr>
+            <tr>
+                <td>Quinn Flynn</td>
+                <td>Çağlar</td>
+                <td>Edinburgh</td>
+                <td>22</td>
+                <td>2013/03/03</td>
+                <td>$342,000</td>
+            </tr>
+            <tr>
+                <td>Charde Marshall</td>
+                <td>Regional Director</td>
+                <td>San Francisco</td>
+                <td>36</td>
+                <td>2008/10/16</td>
+                <td>$470,600</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th>Name</th>
+                <th>Position</th>
+                <th>Office</th>
+                <th>Age</th>
+                <th>Start date</th>
+                <th>Salary</th>
+            </tr>
+        </tfoot>
+    </table>
+</div>
+</div>
+
+
+    <!-- <script src="https://cdn.datatables.net/1.10.25/js/dataTables.bootstrap4.min.js"></script> -->
+ 
+    <script>
+        jQuery.extend(jQuery.fn.dataTableExt.oSort, {
+            "turkish-pre": function (a) {
+                var special_letters = {
+                    "C": "Ca", "c": "ca", "Ç": "Cb", "ç": "cb",
+                    "G": "Ga", "g": "ga", "Ğ": "Gb", "ğ": "gb",
+                    "I": "Ia", "ı": "ia", "İ": "Ib", "i": "ib",
+                    "O": "Oa", "o": "oa", "Ö": "Ob", "ö": "ob",
+                    "S": "Sa", "s": "sa", "Ş": "Sb", "ş": "sb",
+                    "U": "Ua", "u": "ua", "Ü": "Ub", "ü": "ub"
+                };
+                for (var val in special_letters)
+                    a = a.split(val).join(special_letters[val]).toLowerCase();
+                return a;
+            },
+
+            "turkish-asc": function (a, b) {
+                return ((a < b) ? -1 : ((a > b) ? 1 : 0));
+            },
+
+            "turkish-desc": function (a, b) {
+                return ((a < b) ? 1 : ((a > b) ? -1 : 0));
+            }
+        });
+    </script>
+
+    
+
+    
+</body>
+
+</html>
